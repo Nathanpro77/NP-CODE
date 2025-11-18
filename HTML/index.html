@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NP CODE - Développeur Web</title>
+
+    <style>
+        /* ------------------------------------------------
+           RESET & BASE
+        ------------------------------------------------ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: #fff;
+            color: #111;
+            scroll-behavior: smooth;
+        }
+
+        /* ------------------------------------------------
+           HEADER (Premium)
+        ------------------------------------------------ */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 60px;
+            border-bottom: 1px solid #eee;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-weight: 700;
+            color: orange;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #111;
+            font-weight: 500;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: orange;
+        }
+
+        /* ------------------------------------------------
+           HERO (SaaS/Startup Style)
+        ------------------------------------------------ */
+        .hero {
+            height: 100vh;
+            padding: 0 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            max-width: 50%;
+        }
+
+        .hero-text h2 {
+            font-size: 58px;
+            line-height: 1.1;
+            font-weight: 700;
+        }
+
+        .hero-text span {
+            color: orange;
+        }
+
+        .hero-text p {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .cta {
+            margin-top: 30px;
+            display: inline-block;
+            padding: 14px 28px;
+            background: orange;
+            color: #000;
+            font-size: 16px;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(255,140,0,0.35);
+            transition: .3s;
+        }
+
+        .cta:hover {
+            background: #ff8c00;
+            transform: translateY(-3px);
+        }
+
+        /* HERO IMAGE / ILLUSTRATION */
+        .hero-img {
+            width: 45%;
+        }
+
+        .hero-img img {
+            width: 100%;
+            filter: drop-shadow(0 30px 40px rgba(0,0,0,0.15));
+        }
+
+        /* ------------------------------------------------
+           SKILLS / FEATURES
+        ------------------------------------------------ */
+        .section {
+            padding: 120px 60px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 60px;
+            color: #111;
+            font-weight: 700;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #eee;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            transition: 0.4s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 18px 50px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* ------------------------------------------------
+           TIMELINE (Évolution)
+        ------------------------------------------------ */
+        .timeline {
+            border-left: 4px solid orange;
+            padding-left: 40px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .step {
+            margin-bottom: 40px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .step::before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: orange;
+            border-radius: 50%;
+            left: -50px;
+            top: 0;
+        }
+
+        .step h4 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: #444;
+        }
+
+        /* ------------------------------------------------
+           CONTACT SECTION (Clickable)
+        ------------------------------------------------ */
+        .contact-box {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 25px;
+            background: #fff;
+            border-radius: 14px;
+            border: 1px solid #eee;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            transition: .3s;
+            text-decoration: none;
+            color: #111;
+        }
+
+        .contact-item img {
+            width: 30px;
+        }
+
+        .contact-item:hover {
+            background: #ffedd1;
+            transform: translateX(10px);
+        }
+
+        /* ------------------------------------------------
+           FOOTER
+        ------------------------------------------------ */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #111;
+            color: #fff;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>NP CODE</h1>
+        <nav>
+            <a href="#hero">Accueil</a>
+            <a href="#skills">Compétences</a>
+            <a href="#evolution">Évolution</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-text">
+            <h2>Je suis <span>Nathan</span>, Développeur Web Passionné</h2>
+            <p>Je crée des interfaces modernes, professionnelles et élégantes. Voici mon évolution dans le développement web.</p>
+
+            <a href="#contact" class="cta">Me Contacter</a>
+        </div>
+
+        <div class="hero-img">
+            <img src="img2.jpg">
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+        <h2 class="title">Mes Compétences</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Développement Web</h3>
+                <p>HTML, CSS, JavaScript — création d'interfaces modernes et responsives.</p>
+            </div>
+
+            <div class="card">
+                <h3>UI/UX Design</h3>
+                <p>Création des Flyers pour vos waraps.</p>
+            </div>
+
+            <div class="card">
+                <h3>Sites Modernes</h3>
+                <p>Création des pages pour vos entreprises.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVOLUTION -->
+    <section class="section" id="evolution">
+        <h2 class="title">Mon Évolution</h2>
+
+        <div class="timeline">
+            <div class="step">
+                <h4>Mes Débuts</h4>
+                <p>J’ai appris les bases du web : HTML, CSS, JavaScript.</p>
+            </div>
+
+            <div class="step">
+                <h4>Premiers Projets</h4>
+                <p>Création de sites responsives et propres.</p>
+            </div>
+
+            <div class="step">
+                <h4>Progression Continue</h4>
+                <p>Maîtrise du design moderne, animations, interactions avancées.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+        <h2 class="title">Contact</h2>
+
+        <div class="contact-box">
+
+            <a class="contact-item" href="tel:655012564">
+                <img src="telephone.png">
+                Appeler : 655012564
+            </a>
+
+            <a class="contact-item" href="mailto:angenathantchouante@gmail.com">
+                <img src="mail.png">
+                angenathantchouante@gmail.com
+            </a>
+
+            <a class="contact-item" href="https://www.facebook.com/Nathanpro11" target="_blank">
+                <img src="fblogo.avif">
+                Nathan pro
+            </a>
+
+            <a class="contact-item" href="https://wa.me/655012564" target="_blank">
+                <img src="wsplogo.png">
+                WhatsApp : 655012564
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 NP CODE — Tous droits réservés      ____     655012564
+    </footer>
+
+</body>
+</html>
+
